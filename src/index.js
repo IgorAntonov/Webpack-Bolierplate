@@ -1,4 +1,5 @@
-import './style.css';
 import 'core-js/fn/promise';
+import './style.css';
 
 console.log('hello');
+
