@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = (env, argv) => {
- 
+  
   return {
     entry: './src/index.js',
     output: {
