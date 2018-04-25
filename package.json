@@ -4,9 +4,9 @@
   "description": "Webpack boilerplate",
   "private": true,
   "scripts": {
-    "build": "webpack --config webpack.config.prod.js",
-    "start": "webpack-dev-server --open --config webpack.config.dev.js",
-    "test": "jest"
+    "build": "webpack --config ./config/webpack.config.prod.js --progress",
+    "start": "webpack-dev-server --open --config ./config/webpack.config.dev.js",
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "Igor Antonov",
@@ -58,7 +58,7 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/configureEnzymeAdapter.js"
+      "<rootDir>/config/configureEnzymeAdapter.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

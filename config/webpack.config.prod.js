@@ -1,40 +1,27 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const ROOT_DIR = path.resolve(__dirname, '../');
+
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(ROOT_DIR, 'src/index.js'),
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    filename: 'js/[name].[chunkhash:8].js',
+    path: path.resolve(ROOT_DIR, 'build'),
     publicPath: '/'
   },
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
-  devtool: 'cheap-module-source-map',
-  devServer: {
-    host: 'localhost',
-    port: '3000',
-    contentBase: path.resolve(__dirname, 'public'),
-    watchContentBase: true,
-    publicPath: '/',
-    clientLogLevel: 'none',
-    compress: true,
-    historyApiFallback: true,
-    hot: true,
-    proxy: {
-      '/api': 'http://localhost:5000'
-    }
-  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: path.resolve(ROOT_DIR, 'node_modules'),
         use: {
           loader: 'babel-loader'
         }
@@ -42,11 +29,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              minimize: true
             }
           },
           {
@@ -68,24 +56,35 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000
+              limit: 10000,
+              name: 'media/[name].[hash:8].[ext]'
             }
-          }
+          },
         ]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html'),
-      favicon: path.resolve(__dirname, 'public/favicon.ico'),
-      inject: true
+      template: path.resolve(ROOT_DIR, 'public/index.html'),
+      favicon: path.resolve(ROOT_DIR, 'public/favicon.ico'),
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      }
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    }),
-    new webpack.HotModuleReplacementPlugin()
+      filename: 'css/[name].[contenthash:8].css'
+    })
   ]
 };
 
