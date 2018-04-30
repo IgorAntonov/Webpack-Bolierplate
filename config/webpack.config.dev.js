@@ -26,6 +26,7 @@ module.exports = {
     publicPath: '/',
     clientLogLevel: 'none',
     compress: true,
+    noInfo: true,
     historyApiFallback: true,
     hot: true,
     proxy: {
