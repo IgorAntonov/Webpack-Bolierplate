@@ -8,10 +8,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 import store from './store';
-import './utils/reboot.css';
+import 'normalize.css';
 
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
