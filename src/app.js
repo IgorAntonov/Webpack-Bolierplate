@@ -1,8 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import { Header } from './features/header';
-import { Main } from './features/main';
+import { Main } from 'Src/features/main';
+import { Header } from 'Src/features/header';
+
 import Grid from './style';
 
 export const App = () => (

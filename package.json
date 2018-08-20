@@ -28,6 +28,7 @@
     "enzyme-to-json": "^3.3.4",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
@@ -69,7 +70,15 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(jpg|jpeg|png|gif)$": "<rootDir>/config/fileMock.js"
+    },
+    "moduleNameMapper": {
+      "^Config(.*)$": "<rootDir>/config$1",
+      "^Src(.*)$": "<rootDir>/src$1"
+    }
   },
   "babel": {
     "presets": [
@@ -90,6 +99,13 @@
     "plugins": [
       "react"
     ],
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "./config/webpack.config.dev.js"
+        }
+      }
+    },
     "rules": {
       "import/prefer-default-export": "off",
       "react/jsx-filename-extension": [

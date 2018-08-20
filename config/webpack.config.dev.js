@@ -15,7 +15,11 @@ module.exports = {
   },
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      Config: path.resolve(ROOT_DIR, 'config/'),
+      Src: path.resolve(ROOT_DIR, 'src')
+    }
   },
   devtool: 'cheap-module-source-map',
   devServer: {
@@ -94,4 +98,3 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ]
 };
-
