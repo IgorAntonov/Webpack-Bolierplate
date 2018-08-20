@@ -4,7 +4,6 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-left: 1.1rem;
   padding-right: 1.1rem;
   
@@ -32,4 +31,3 @@ export const GHLink = styled.a.attrs({
     text-decoration: none;
   }
 `;
-

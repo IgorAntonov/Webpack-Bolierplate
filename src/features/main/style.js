@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MainWrapper = styled.main`
   display: flex;
   justify-content: center;
-
   padding: 1.5rem;
   
   color: #333;
@@ -22,17 +21,14 @@ export const ClickerHeader = styled.h3`
 `;
 
 export const ClickBtn = styled.button`
-  padding: 0 2rem;
-  
-  font-weight: bold;
-  color: palevioletred;
+  padding: 0 2rem; 
   border: 2px solid palevioletred;
   border-radius: 4px;
 
+  font-weight: bold;
+  color: palevioletred;
   background-color: #fff;
-
   cursor: pointer;
-
   :focus {
     outline: none;
   }
