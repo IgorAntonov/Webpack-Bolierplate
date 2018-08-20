@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
+import { actions, getCount } from 'Src/ducks/main';
 import { Main } from './main';
-import { actions, getCount } from '../../ducks/main';
 
 const { clickBtn } = actions;
 

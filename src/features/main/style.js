@@ -10,12 +10,6 @@ export const MainWrapper = styled.main`
   font-weight: bold;
 `;
 
-export const ClickerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const ClickerHeader = styled.h3`
   color: palevioletred;
 `;
@@ -29,6 +23,7 @@ export const ClickBtn = styled.button`
   color: palevioletred;
   background-color: #fff;
   cursor: pointer;
+  transition: 0.2s all;
   :focus {
     outline: none;
   }

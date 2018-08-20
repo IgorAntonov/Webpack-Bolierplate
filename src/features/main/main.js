@@ -1,31 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Col } from 'Src/ui';
+
 import {
   MainWrapper,
-  ClickerWrapper,
   ClickerHeader,
   ClickBtn
 } from './style';
 
-export const Main = ({ count, clickBtn }) => {
-  const isReady = count === 0;
-  return (
-    <MainWrapper>
-      <ClickerWrapper>
-        <ClickerHeader>
-          {isReady
-            ? 'Looks like you\'re ready! Happy coding!'
-            : 'Are you ready to work hard?'}
-        </ClickerHeader>
-        {!isReady && (
-          <ClickBtn onClick={clickBtn}>
-            {`${count} clicks`}
-          </ClickBtn>)}
-      </ClickerWrapper>
-    </MainWrapper>
-  );
-};
+export const Main = ({ count, clickBtn }) => (
+  <MainWrapper>
+    <Col align="center">
+      <ClickerHeader>
+        {count === 0
+          ? 'Looks like you\'re ready! Happy coding!'
+          : 'Are you ready to work hard?'}
+      </ClickerHeader>
+      {count !== 0 && (
+        <ClickBtn onClick={clickBtn}>
+          {`${count} clicks`}
+        </ClickBtn>)}
+    </Col>
+  </MainWrapper>
+);
 
 Main.propTypes = {
   count: PropTypes.number.isRequired,
