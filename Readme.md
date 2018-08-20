@@ -2,7 +2,7 @@
 
 ## Included features
 ### React ecosystem
-*React 16.3, Redux, React Router 4*
+*React 16.4, Redux, React Router 4*
 ### Styling
 *Styled-components*
 ### Testing
