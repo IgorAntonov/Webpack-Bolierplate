@@ -1,19 +1,24 @@
 // Add polyfills here or to the entry point in webpack config, if they will be too much
 import 'core-js/fn/promise';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 import 'normalize.css';
 
 import { HotApp as App } from './app';
-import { store } from './store';
+import { configureStore } from './store';
+
+const history = createBrowserHistory();
+const store = configureStore({ history });
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <App />
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
