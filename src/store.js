@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
@@ -16,10 +16,15 @@ export const configureStore = ({ history, initialState = {} }) => {
     const logger = createLogger({ collapsed: true });
     middlewares.push(logger);
   }
+  /* eslint-disable no-underscore-dangle */
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  /* eslint-enable */
 
   return createStore(
     connectedRouter(rootReducer),
     initialState,
-    applyMiddleware(...middlewares)
+    composeEnhancers(
+      applyMiddleware(...middlewares)
+    )
   );
 };
